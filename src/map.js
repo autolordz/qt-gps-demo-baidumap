@@ -1,4 +1,4 @@
-<script type="text/javascript" src="http://api.map.baidu.com/api?key=46ce9d0614bf7aefe0ba562f8cf87194&v=1.0&services=true">
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=YOURAPPKEYS&v=1.0&services=true">
 </script>
 </head>
 <body>
@@ -10,8 +10,8 @@
 var map = new BMap.Map("container");
 var point = new BMap.Point(113.562447, 22.256915);
 map.centerAndZoom(point, 15);
-var marker = new BMap.Marker(point);        // ´´½¨±ê×¢
-map.addOverlay(marker);                          // ½«±ê×¢Ìí¼Óµ½µØÍ¼ÖÐ
+var marker = new BMap.Marker(point);        // åˆ›å»ºæ ‡æ³¨
+map.addOverlay(marker);                          // å°†æ ‡æ³¨æ·»åŠ åˆ°åœ°å›¾ä¸­
 </script>
 
 
