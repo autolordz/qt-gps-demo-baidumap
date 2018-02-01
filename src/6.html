@@ -1,0 +1,17 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<script type="text/javascript" src="http://app.mapabc.com/apis?&t=flashmap&v=2.3.4&key=974c2a6a6a755aa1cde237b2d2aab4b679167e2d137adeb08550e4bf7bd2060caa86861f7f4da4cd"></script>
+</head>
+<body>
+<div id="mapObj" style="width: 400px; height: 300px"></div>
+<script type="text/javascript">
+var mapoption = new MMapOptions();
+mapoption.zoom=13;//设置地图zoom级别
+mapoption.toolbar=DEFAULT; //设置工具条
+mapoption.toolbarPos=new MPoint(0,0);
+mapoption.overviewMap =SHOW; //设置鹰眼
+var mapObj = new MMap("mapObj", mapoption); //地图初始化
+</script>
+</body>
+</html>

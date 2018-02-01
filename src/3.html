@@ -1,0 +1,27 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>
+地址解析</title>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=46ce9d0614bf7aefe0ba562f8cf87194&v=1.0&services=true">
+</script>
+</head>
+<body>
+<div style="width:520px;height:340px;border:1px solid gray" id="container">
+</div>
+</body>
+</html>
+<script type="text/javascript">
+
+var map = new BMap.Map("container");
+map.centerAndZoom(new BMap.Point(113.562447, 22.256915), 11);
+// 创建地址解析器实例
+var myGeo = new BMap.Geocoder();
+// 将地址解析结果显示在地图上,并调整地图视野
+myGeo.getPoint("北京理工大学珠海学院", function(point){
+  if (point) {
+    map.centerAndZoom(point, 16);
+    map.addOverlay(new BMap.Marker(point));
+  }
+}, "珠海市");
+</script>

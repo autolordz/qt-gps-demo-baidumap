@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="keywords" content="百度地图,百度地图API，百度地图自定义工具，百度地图所见即所得工具" />
+<meta name="description" content="百度地图API自定义地图，帮助用户在可视化操作下生成百度地图" />
+<title>百度地图API自定义地图</title>
+<!--引用百度地图API-->
+<style type="text/css">
+    html,body{margin:0;padding:0;}
+    .iw_poi_title {color:#CC5522;font-size:14px;font-weight:bold;overflow:hidden;padding-right:13px;white-space:nowrap}
+    .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
+</style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=ebb84673a8d7c848e6d03fec2d5085c3&v=1.1&services=true"></script>
+</head>
+
+<body>
+  <!--百度地图容器-->
+  <div style="width:697px;height:550px;border:#ccc solid 1px;" id="dituContent"></div>
+</body>
+<script type="text/javascript">
+    //创建和初始化地图函数：
+    function initMap(){
+        createMap();//创建地图
+        setMapEvent();//设置地图事件
+        addMapControl();//向地图添加控件
+        addPolyline();//向地图中添加线
+        addRemark();//向地图中添加文字标注
+    }
+    
+    //创建地图函数：
+    function createMap(){
+        var map = new BMap.Map("dituContent");//在百度地图容器中创建一个地图
+        var point = new BMap.Point(113.562447,22.256915);//定义一个中心点坐标
+        map.centerAndZoom(point,13);//设定地图的中心点和坐标并将地图显示在地图容器中
+        window.map = map;//将map变量存储在全局
+    }
+    
+    //地图事件设置函数：
+    function setMapEvent(){
+        map.enableDragging();//启用地图拖拽事件，默认启用(可不写)
+        map.enableScrollWheelZoom();//启用地图滚轮放大缩小
+        map.enableDoubleClickZoom();//启用鼠标双击放大，默认启用(可不写)
+        map.enableKeyboard();//启用键盘上下左右键移动地图
+    }
+    
+    //地图控件添加函数：
+    function addMapControl(){
+        //向地图中添加缩放控件
+	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_RIGHT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+	map.addControl(ctrl_nav);
+        //向地图中添加缩略图控件
+	var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});
+	map.addControl(ctrl_ove);
+        //向地图中添加比例尺控件
+	var ctrl_sca = new BMap.ScaleControl({anchor:BMAP_ANCHOR_BOTTOM_LEFT});
+	map.addControl(ctrl_sca);
+    }
+    
+//标注线数组
+    var plPoints = [{style:"solid",weight:4,color:"#f00",opacity:0.6,points:["113.56489|22.260126","113.570352|22.290895","113.577539|22.270562","113.565753|22.260126","113.56489|22.260394"]}
+		 ];
+    //向地图中添加线函数
+    function addPolyline(){
+		for(var i=0;i<plPoints.length;i++){
+			var json = plPoints[i];
+			var points = [];
+			for(var j=0;j<json.points.length;j++){
+				var p1 = json.points[j].split("|")[0];
+				var p2 = json.points[j].split("|")[1];
+				points.push(new BMap.Point(p1,p2));
+			}
+			var line = new BMap.Polyline(points,{strokeStyle:json.style,strokeWeight:json.weight,strokeColor:json.color,strokeOpacity:json.opacity});
+			map.addOverlay(line);
+		}
+	}
+//文字标注数组
+    var lbPoints = [{point:"113.530395|22.276448",content:"我的标记"}
+		 ];
+    //向地图中添加文字标注函数
+    function addRemark(){
+        for(var i=0;i<lbPoints.length;i++){
+            var json = lbPoints[i];
+            var p1 = json.point.split("|")[0];
+            var p2 = json.point.split("|")[1];
+            var label = new BMap.Label("<div style='padding:2px;'>"+json.content+"</div>",{point:new BMap.Point(p1,p2),offset:new BMap.Size(3,-6)});
+            map.addOverlay(label);
+            label.setStyle({borderColor:"#999"});
+        }
+    }
+    
+   
+    initMap();//创建和初始化地图
+</script>
+</html>
+
+
+
+
+●PI（ProcessInformation）：美国OSI公司的产品，市场占有率较高，已在国内多家电厂和冶金企业实施。螺旋门是PI的专利数据压缩技术，其数学机理是采用多个折线来拟合近似原始的连续曲线。PI包括服务器端软件和客户端应用软件两大类。常用的客户应用软件是PI－ProcessBook、PI－DataLink和PI－ActiveView。PI具有非常丰富的数据接口，能提供绝大多数知名控制系统的商用接口软件。
+●InfoPlus。21：美国AspenTechnology公司产品，多用于石化、制药等行业。InfoPlus。21是一款性能优异的实时数据库系统，高度模块化，开放性与可扩展性好；与Aspen的其它产品集成，易于实现先进控制与优化、过程建模、故障检测、批过程分析等高级应用。常用的工具软件有：流程和趋势显示软件AspenProcessExplore、网页发布软件Web。21、流程事件治理与显示软件Event。21等。
+●eDNA：美国Instep公司产品，在美国和加拿大的一些电站使用，在国内电厂有应用案例。eDNA由一组服务性质模块和应用性质模块所组成，可以实现分布式部署与应用，可扩展性非常好，能够有效地节省和保护用户投资。eDNA采用无损压缩技术对生产数据进行保存，能够同时实现数据的高压缩比和高精度。常用的客户端应用模块有：eDNA－View、eDNA－Trend和eDNA－Web。
+●iHistorian：美国GEFanuc公司产品，在国内多家电厂和冶金企业使用。iHistorian只是存储过程数据的服务器软件，具体应用中还需要网页浏览服务软件infoAgent、流程分析软件iDownTime或者iFix软件相互配合使用。iHistorian具备良好的容错和分布式部署能力，可扩展性强；所有治理、配置与应用都在浏览器中完成，安全性、易维护性和易用性很高。
+●IndustrialSQL：美国Wonderware公司产品，在国内电厂有使用案例。IndustrialSQL是一款以商用关系数据库为基础的实时/历史数据库，其内核是微软的SQLServer，具备良好的安全性、易用性和容错性，可扩展能力强。客户端应用软件有：报表与分析软件包ActiveFactory、设备性能实时分析与优化软件包DTAnalyst、浏览器访问工具SuiteVoyager等。
+●RSBizWare：美国Rockwell公司产品。RSBizWare由一组软件模块组成，支持多层、分布式部署，可扩展性强。其实时/历史数据库以SQLServer或者Oracle为基础，使用RSBizWare的时间序列压缩算法将原始过程数据转换为一种预定义压缩格式后存储。常用的客户端软件有RSBizWareProductionClient、RSBizWareReport等。RSBizWare支持浏览器直接访问流程图、趋势曲线与报表等。
+●openPlant：上海麦杰公司的具有自主知识产权产品，在国内多家电厂和冶金企业应用。openPlant是一款基于J2EE架构的软件包，支持分布式应用，可扩展性、安全性和易治理性很强。openPlant采用时空二维压缩算法处理过程数据，具有高压缩效率与数据精度。openPlant全部采用浏览器进行配置治理与访问，实现了客户端的零安装。常用的应用模块：@Process、@Detail和@Trend。●RealTERM：南京明维公司的具有自主知识产权产品，在国内多家电厂应用。RealTERM是基于Windows平台的32位应用软件包，内部采用ActiveX软件总线连接，外部接口遵照OPC标准，具有标准的模块化结构，易于维护和扩展。客户端采用三层体系结构和Exe/Web双平台运行方式，用户无需下载任何插件或者软件即可使用浏览器访问实时数据与历史数据。
+
+
+
+
+
+
+今天来到印步公司上班，又一如既往的画图，感觉自己现在能画一些好高级的图了，而且画图速度迅猛提高，画完图还阅读了别的前辈的wiki，对服务器配点有一个笼统的了解。自己也在不断的学习当中总结出不少的经验技巧，任何东西刚开始都是从模仿中学习，学到的不是内容，是方法，以后去到哪里工作，干那些活，都容易上手，都有方法上手，因此我觉得，对待任何事都觉得这是一个过程，慢慢成长！
+
+         今天，来到公司第一件事就是进行学习，首先还是对C++基础的学习，因为日后可能要需要。过没多久就有图要画，画着画着，就学习配点来了，配点要连接到一个程序，那就是eDNA强大的服务器咯，然后还是不停的改啊改那些数据点，挺累的，不过还是学习了新东西，还可以吧
+
+
+     今天配点的时候遇到重大挫折，就是ifix装不上，安装完毕打开到workspace时出现内存不能为read的终极严重错误，其他人同样配置、系统、软件的情况下可以顺利运行，耗费半天的安装时间，上网搜索未果，打了补丁无效，最终以失败告终，还有ifix的服务是成功启动了，就是进入不了工作台，余下的时间学习测试，浏览测试文档，继续努力

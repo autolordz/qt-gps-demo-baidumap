@@ -1,0 +1,23 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>
+驾车导航的结果面板</title>
+<script type="text/javascript" src="http://api.map.baidu.com/api?key=46ce9d0614bf7aefe0ba562f8cf87194&v=1.0&services=true">
+</script>
+</head>
+<body>
+<div style="width:800px;height:600px;border:1px solid gray" id="container">
+</div>
+<div id="results" style="font-size:13px;margin-top:10px;">
+</div>
+</body>
+</html>
+<script type="text/javascript">
+
+var map = new BMap.Map("container");
+map.centerAndZoom(new BMap.Point(113.555236,22.369267), 14);
+
+var driving = new BMap.DrivingRoute(map, {renderOptions: {map: map, panel: "results", autoViewport: true}});
+driving.search("北京理工大学珠海", "北京师范大学珠海");
+</script>
