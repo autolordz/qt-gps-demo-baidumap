@@ -2,7 +2,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
 
-    <script type="text/javascript" src="http://api.map.baidu.com/api?key=46ce9d0614bf7aefe0ba562f8cf87194&v=1.1&services=true"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?key=xxxxxxxxx&v=1.1&services=true"></script>
 
 </head>
 <body>
@@ -40,7 +40,8 @@
     //地图控件添加函数：
     function addMapControl(){
         //向地图中添加缩放控件
-	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE});
+	var ctrl_nav = new BMap.NavigationControl({anchor:BMAP_ANCHOR_TOP_LEFT,type:BMAP_NAVIGATION_CONTROL_LARGE
+});
 	map.addControl(ctrl_nav);
         //向地图中添加缩略图控件
 	var ctrl_ove = new BMap.OverviewMapControl({anchor:BMAP_ANCHOR_BOTTOM_RIGHT,isOpen:1});
@@ -117,7 +118,11 @@
      } 
  
     //标注线数组
-    //var plPoints = [{style:"solid",weight:4,color:"#f00",opacity:0.6,points:["113.552811|22.367722","113.552632|22.368792","113.551769|22.369962","113.551589|22.370496","113.551374|22.370496","113.55141|22.371165","113.552775|22.371766","113.552991|22.372435","113.552703|22.373237","113.551661|22.373738","113.551374|22.373838","113.551122|22.374273","113.548751|22.374808","113.548248|22.374874","113.54832|22.374173"]}
+    //var plPoints = 
+[{style:"solid",weight:4,color:"#f00",opacity:0.6,points:["113.552811|22.367722","113.552632|22.368792","113.551769|22.369962
+","113.551589|22.370496","113.551374|22.370496","113.55141|22.371165","113.552775|22.371766","113.552991|22.372435","11
+3.552703|22.373237","113.551661|22.373738","113.551374|22.373838","113.551122|22.374273","113.548751|22.374808","113.54
+8248|22.374874","113.54832|22.374173"]}
 	// ];
 	 
     //向地图中添加线函数
@@ -138,14 +143,18 @@
 				var p2 = json.points[j].split("|")[1];
 				points.push(new BMap.Point(p1,p2));
 			}
-			var line = new BMap.Polyline(points,{strokeStyle:json.style,strokeWeight:json.weight,strokeColor:json.color,strokeOpacity:json.opacity});
+			var line = new BMap.Polyline(points,{strokeStyle:json.style,strokeWeight:json.weight,strokeColor:json.color,
+strokeOpacity:json.opacity});
 			map.addOverlay(line);
 		}
 	}
 	
 	 
     //标注点数组
-    var markerArr = [{title:"北理工",content:"北京理工大学珠海学院（ZHUHAI CAMPUS，BEIJING INSTITUTE OF TECHNOLOGY）是经中华人民共和国教育部批准，于2004年5月8日正式成立的普通高等学校。珠海学院以北京理工大学作为办学主体，是北京理工大学办学理念和办学资源的延伸和扩展，是北京理工大学发展战略的组成部分",point:"113.552407|22.370002",isOpen:0,icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
+    var markerArr = [{title:"北理工",content:"北京理工大学珠海学院（ZHUHAI CAMPUS，BEIJING INSTITUTE OF 
+TECHNOLOGY）是经中华人民共和国教育部批准，于2004年5月8日正式成立的普通高等学校。珠海学院以北京理工大学作为办学主体
+，是北京理工大学办学理念和办学资源的延伸和扩展，是北京理工大学发展战略的组成部分",point:"113.552407|22.370002",isOpen:0,
+icon:{w:21,h:21,l:0,t:0,x:6,lb:5}}
 		 ];
     //创建marker
     function addMarker(){
@@ -190,12 +199,15 @@
     //创建InfoWindow
     function createInfoWindow(i){
         var json = markerArr[i];
-        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div class='iw_poi_content'>"+json.content+"</div>");
+        var iw = new BMap.InfoWindow("<b class='iw_poi_title' title='" + json.title + "'>" + json.title + "</b><div 
+class='iw_poi_content'>"+json.content+"</div>");
         return iw;
     }
     //创建一个Icon
     function createIcon(json){
-        var icon = new BMap.Icon("http://openapi.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,json.h)})
+        var icon = new BMap.Icon("http://openapi.baidu.com/map/images/us_mk_icon.png", new BMap.Size(json.w,json.h),{
+imageOffset: new BMap.Size(-json.l,-json.t),infoWindowOffset:new BMap.Size(json.lb+5,1),offset:new BMap.Size(json.x,
+json.h)})
         return icon;
     }
 
